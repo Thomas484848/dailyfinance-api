@@ -1,0 +1,12 @@
+api_platform:
+    title: Hello API Platform
+    version: 1.0.0
+    defaults:
+        stateless: true
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']
+    openapi:
+        swagger_ui_extra_configuration:
+            persistAuthorization: true
+            requestInterceptor: "function (req) { if (req.url && req.url.endsWith('/api/login')) { req.body = JSON.stringify({\"email\":\"micheldelacompta\",\"password\":\"Fermetagrandegueule0285$\"}); } var token = window.localStorage.getItem('jwt_token'); if (token && req.url && !req.url.endsWith('/api/login')) { req.headers = req.headers || {}; req.headers['Authorization'] = 'Bearer ' + token; } return req; }"
+            responseInterceptor: "function (res) { if (res.url && res.url.endsWith('/api/login') && res.body) { try { var data = (typeof res.body === 'string') ? JSON.parse(res.body) : res.body; if (data && data.token) { window.localStorage.setItem('jwt_token', data.token); if (window.ui && window.ui.preauthorizeApiKey) { window.ui.preauthorizeApiKey('JWT', 'Bearer ' + data.token); } else if (window.ui && window.ui.getSystem) { var auth = window.ui.getSystem().authActions; if (auth && auth.authorize) { auth.authorize({ JWT: { name: 'JWT', schema: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, value: 'Bearer ' + data.token } }); } } } } catch (e) {} } return res; }"
