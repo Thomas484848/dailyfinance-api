@@ -18,7 +18,7 @@ class Instrument
     #[ORM\Column(length: 64)]
     private string $id;
 
-    #[ORM\Column(length: 32)]
+    #[ORM\Column(length: 64)]
     private string $symbol;
 
     #[ORM\Column(length: 16, nullable: true)]
