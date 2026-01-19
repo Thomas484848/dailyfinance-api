@@ -6,38 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eb5793d1-5cc6-4fe4-8c6d-f6f6ac50984c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20260116150000.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/AggregatorConfig.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/IdGenerator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/MergeMetrics.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/Orchestrator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/ParsedMetrics.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/ProviderAdapterInterface.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/ProviderCacheService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/ProviderLimiter.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/ProviderRegistry.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/ProviderResponse.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/Providers/AlphaVantageProvider.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/Providers/FinnhubProvider.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/Providers/FmpProvider.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregation/Providers/TwelveDataProvider.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/ImportSqliteCommand.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/RefreshAggregatorCommand.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminRefreshController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/InstrumentsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/StocksController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Instrument.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Job.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/JobRun.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Metrics.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/ProviderCache.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/SymbolAlias.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/DescriptionExtractor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/LogoExtractor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/ValuationService.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +167,7 @@
       <updated>1768561776328</updated>
       <workItem from="1768561777618" duration="11753000" />
       <workItem from="1768745490109" duration="8698000" />
-      <workItem from="1768811921032" duration="4720000" />
+      <workItem from="1768811921032" duration="5324000" />
     </task>
     <servers />
   </component>
