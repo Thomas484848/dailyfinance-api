@@ -22,6 +22,8 @@ class RegistrationController
         $payload = $request->toArray();
         $email = isset($payload['email']) ? trim((string) $payload['email']) : '';
         $plainPassword = isset($payload['password']) ? (string) $payload['password'] : '';
+        $firstName = isset($payload['firstName']) ? trim((string) $payload['firstName']) : null;
+        $lastName = isset($payload['lastName']) ? trim((string) $payload['lastName']) : null;
 
         if ($email === '' || $plainPassword === '') {
             return new JsonResponse(['message' => 'Email and password are required.'], 400);
@@ -33,11 +35,18 @@ class RegistrationController
 
         $user = new User();
         $user->setEmail($email);
-        $user->setPassword($passwordHasher->hashPassword($user, $plainPassword));
+        $user->setPasswordHash($passwordHasher->hashPassword($user, $plainPassword));
+        $user->setFirstName($firstName !== '' ? $firstName : null);
+        $user->setLastName($lastName !== '' ? $lastName : null);
 
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return new JsonResponse(['id' => $user->getId(), 'email' => $user->getEmail()], 201);
+        return new JsonResponse([
+            'id' => $user->getId(),
+            'email' => $user->getEmail(),
+            'firstName' => $user->getFirstName(),
+            'lastName' => $user->getLastName(),
+        ], 201);
     }
 }
