@@ -34,6 +34,8 @@ final class WatchlistController extends AbstractController
                 'name' => $watchlist->getName(),
                 'description' => $watchlist->getDescription(),
                 'isDefault' => $watchlist->isDefault(),
+                'color' => $watchlist->getColor(),
+                'coverImage' => $watchlist->getCoverImage(),
                 'createdAt' => $watchlist->getCreatedAt()?->format('c'),
                 'updatedAt' => $watchlist->getUpdatedAt()?->format('c'),
             ];
@@ -60,6 +62,12 @@ final class WatchlistController extends AbstractController
         $watchlist->setName($name);
         $watchlist->setDescription(isset($payload['description']) ? (string) $payload['description'] : null);
         $watchlist->setIsDefault((bool) ($payload['isDefault'] ?? false));
+        if (array_key_exists('color', $payload)) {
+            $watchlist->setColor($payload['color'] !== null ? (string) $payload['color'] : null);
+        }
+        if (array_key_exists('coverImage', $payload)) {
+            $watchlist->setCoverImage($payload['coverImage'] !== null ? (string) $payload['coverImage'] : null);
+        }
         $watchlist->setUser($user);
 
         $this->entityManager->persist($watchlist);
@@ -70,6 +78,8 @@ final class WatchlistController extends AbstractController
             'name' => $watchlist->getName(),
             'description' => $watchlist->getDescription(),
             'isDefault' => $watchlist->isDefault(),
+            'color' => $watchlist->getColor(),
+            'coverImage' => $watchlist->getCoverImage(),
             'createdAt' => $watchlist->getCreatedAt()?->format('c'),
             'updatedAt' => $watchlist->getUpdatedAt()?->format('c'),
         ], 201);
@@ -88,6 +98,8 @@ final class WatchlistController extends AbstractController
             'name' => $watchlist->getName(),
             'description' => $watchlist->getDescription(),
             'isDefault' => $watchlist->isDefault(),
+            'color' => $watchlist->getColor(),
+            'coverImage' => $watchlist->getCoverImage(),
             'createdAt' => $watchlist->getCreatedAt()?->format('c'),
             'updatedAt' => $watchlist->getUpdatedAt()?->format('c'),
         ]);
@@ -115,6 +127,12 @@ final class WatchlistController extends AbstractController
         if (array_key_exists('isDefault', $payload)) {
             $watchlist->setIsDefault((bool) $payload['isDefault']);
         }
+        if (array_key_exists('color', $payload)) {
+            $watchlist->setColor($payload['color'] !== null ? (string) $payload['color'] : null);
+        }
+        if (array_key_exists('coverImage', $payload)) {
+            $watchlist->setCoverImage($payload['coverImage'] !== null ? (string) $payload['coverImage'] : null);
+        }
 
         $this->entityManager->flush();
 
@@ -123,6 +141,8 @@ final class WatchlistController extends AbstractController
             'name' => $watchlist->getName(),
             'description' => $watchlist->getDescription(),
             'isDefault' => $watchlist->isDefault(),
+            'color' => $watchlist->getColor(),
+            'coverImage' => $watchlist->getCoverImage(),
             'createdAt' => $watchlist->getCreatedAt()?->format('c'),
             'updatedAt' => $watchlist->getUpdatedAt()?->format('c'),
         ]);

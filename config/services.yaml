@@ -24,6 +24,88 @@ services:
 
     App\OpenApi\LoginRequestExampleOpenApiFactory:
         decorates: 'lexik_jwt_authentication.api_platform.openapi.factory'
-        arguments: ['@App\OpenApi\LoginRequestExampleOpenApiFactory.inner']
+        arguments:
+            $decorated: '@App\OpenApi\LoginRequestExampleOpenApiFactory.inner'
+            $security: '@security.helper'
+            $requestStack: '@request_stack'
+            $jwtManager: '@lexik_jwt_authentication.jwt_manager'
         autowire: true
         autoconfigure: false
+
+    App\Hydra\DocumentationNormalizerDecorator:
+        decorates: 'api_platform.hydra.normalizer.documentation'
+        arguments:
+            $decorated: '@App\Hydra\DocumentationNormalizerDecorator.inner'
+            $security: '@security.helper'
+        autowire: true
+        autoconfigure: false
+
+    App\Hydra\EntrypointNormalizerDecorator:
+        decorates: 'api_platform.hydra.normalizer.entrypoint'
+        arguments:
+            $decorated: '@App\Hydra\EntrypointNormalizerDecorator.inner'
+            $security: '@security.helper'
+        autowire: true
+        autoconfigure: false
+
+    App\Service\StockImport\ProviderRateLimiter:
+        arguments:
+            $limits:
+                fmp:
+                    rpm: '%env(int:FMP_RPM)%'
+                    rpd: '%env(int:FMP_RPD)%'
+                    maxConcurrent: '%env(int:FMP_MAX_CONCURRENT)%'
+                alphavantage:
+                    rpm: '%env(int:AV_RPM)%'
+                    rpd: '%env(int:AV_RPD)%'
+                    maxConcurrent: '%env(int:AV_MAX_CONCURRENT)%'
+                finnhub:
+                    rpm: '%env(int:FINNHUB_RPM)%'
+                    rpd: '%env(int:FINNHUB_RPD)%'
+                    maxConcurrent: '%env(int:FINNHUB_MAX_CONCURRENT)%'
+                twelvedata:
+                    rpm: '%env(int:TWELVEDATA_RPM)%'
+                    rpd: '%env(int:TWELVEDATA_RPD)%'
+                    maxConcurrent: '%env(int:TWELVEDATA_MAX_CONCURRENT)%'
+            $logger: '@App\Service\StockImport\StockRefreshLogger'
+
+    App\Service\StockImport\StockImportService:
+        arguments:
+            $priorities:
+                default: ['fmp', 'finnhub', 'alphavantage', 'twelvedata']
+                price: '%env(csv:MERGE_PRIORITY_PRICE)%'
+                marketCap: '%env(csv:MERGE_PRIORITY_MARKETCAP)%'
+                peTtm: '%env(csv:MERGE_PRIORITY_PE)%'
+                dividendYield: '%env(csv:MERGE_PRIORITY_DIVIDEND_YIELD)%'
+            $logger: '@App\Service\StockImport\StockRefreshLogger'
+
+    App\Service\StockImport\FmpClient:
+        tags: ['stock.provider']
+
+    App\Service\StockImport\AlphaVantageClient:
+        tags: ['stock.provider']
+
+    App\Service\StockImport\FinnhubClient:
+        tags: ['stock.provider']
+
+    App\Service\StockImport\TwelveDataClient:
+        tags: ['stock.provider']
+
+    App\Command\StocksRefreshCommand:
+        arguments:
+            $loopSleepMs: '%env(int:REFRESH_LOOP_SLEEP_MS)%'
+            $idleSleepMs: '%env(int:REFRESH_IDLE_SLEEP_MS)%'
+        tags:
+            - { name: 'scheduler.task', trigger: 'every', frequency: '1 minute', arguments: '--once' }
+
+    App\Service\StockImport\StockRefreshLogger:
+        arguments:
+            $logFile: '%kernel.project_dir%/var/log/stock_refresh.log'
+
+    App\Service\StockImport\StockUniverse:
+        arguments:
+            $universeFile: '%kernel.project_dir%/var/stock_universe.json'
+
+    App\Command\StockUniverseBuildCommand:
+        arguments:
+            $defaultOutput: '%kernel.project_dir%/var/stock_universe.json'

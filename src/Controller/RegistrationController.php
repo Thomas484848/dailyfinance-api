@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -17,10 +18,11 @@ class RegistrationController
         Request $request,
         UserRepository $users,
         UserPasswordHasherInterface $passwordHasher,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        JWTTokenManagerInterface $jwtManager
     ): JsonResponse {
         $payload = $request->toArray();
-        $email = isset($payload['email']) ? trim((string) $payload['email']) : '';
+        $email = isset($payload['email']) ? strtolower(trim((string) $payload['email'])) : '';
         $plainPassword = isset($payload['password']) ? (string) $payload['password'] : '';
         $firstName = isset($payload['firstName']) ? trim((string) $payload['firstName']) : null;
         $lastName = isset($payload['lastName']) ? trim((string) $payload['lastName']) : null;
@@ -42,11 +44,14 @@ class RegistrationController
         $entityManager->persist($user);
         $entityManager->flush();
 
+        $token = $jwtManager->create($user);
+
         return new JsonResponse([
             'id' => $user->getId(),
             'email' => $user->getEmail(),
             'firstName' => $user->getFirstName(),
             'lastName' => $user->getLastName(),
+            'token' => $token,
         ], 201);
     }
 }

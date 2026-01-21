@@ -2,10 +2,38 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            uriTemplate: '/stocks',
+            normalizationContext: ['groups' => ['stock:read']]
+        ),
+    ],
+    paginationEnabled: true
+)]
+#[ApiFilter(SearchFilter::class, properties: [
+    'symbol' => 'partial',
+    'name' => 'partial',
+    'exchangeCode' => 'exact',
+    'country' => 'exact',
+    'sector' => 'partial',
+    'industry' => 'partial',
+    'currency' => 'exact',
+])]
+#[ApiFilter(RangeFilter::class, properties: [
+    'lastPrice',
+    'marketCap',
+])]
 #[ORM\Entity]
 #[ORM\Table(name: 'stock')]
 class Stock
@@ -13,117 +41,155 @@ class Stock
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['stock:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 32)]
+    #[Groups(['stock:read'])]
     private string $symbol = '';
 
-    #[ORM\Column(length: 16, nullable: true)]
+    #[ORM\Column(length: 64, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $exchangeCode = null;
 
-    #[ORM\Column(length: 16, nullable: true)]
+    #[ORM\Column(length: 64, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $mic = null;
 
     #[ORM\Column(length: 32, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $isin = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 64, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $type = null;
 
     #[ORM\Column(length: 8, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $currency = null;
 
     #[ORM\Column(length: 64, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $country = null;
 
     #[ORM\Column(length: 128, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $sector = null;
 
     #[ORM\Column(length: 128, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $industry = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $website = null;
 
     #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 512, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $logoUrl = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $lastPrice = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $open = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $high = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $low = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $prevClose = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $change = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $changePercent = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $avgVolume30d = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $marketCap = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $sharesOutstanding = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $floatShares = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?\DateTimeImmutable $quoteTimestamp = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?\DateTimeImmutable $lastUpdatedAt = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $beta = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $dividendYield = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $dividendRate = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $peTtm = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $pb = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $psTtm = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $evEbitda = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $week52High = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $week52Low = null;
 
     #[ORM\Column]
+    #[Groups(['stock:read'])]
     private bool $active = true;
 
     #[ORM\Column(length: 64, nullable: true)]
+    #[Groups(['stock:read'])]
     private ?string $dataSource = null;
 
     /**

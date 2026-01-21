@@ -25,6 +25,12 @@ class Watchlist
     #[ORM\Column]
     private bool $isDefault = false;
 
+    #[ORM\Column(length: 32, nullable: true)]
+    private ?string $color = null;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $coverImage = null;
+
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -83,6 +89,30 @@ class Watchlist
     public function setIsDefault(bool $isDefault): self
     {
         $this->isDefault = $isDefault;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getCoverImage(): ?string
+    {
+        return $this->coverImage;
+    }
+
+    public function setCoverImage(?string $coverImage): self
+    {
+        $this->coverImage = $coverImage;
 
         return $this;
     }

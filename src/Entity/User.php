@@ -3,12 +3,35 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Patch;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
+#[ApiResource(
+    operations: [
+        new Get(
+            uriTemplate: '/user',
+            controller: \App\Controller\UserController::class,
+            read: false,
+            normalizationContext: ['groups' => ['user:read']]
+        ),
+        new Patch(
+            uriTemplate: '/user',
+            controller: \App\Controller\UserController::class,
+            read: false,
+            write: false,
+            normalizationContext: ['groups' => ['user:read']],
+            denormalizationContext: ['groups' => ['user:write']]
+        ),
+    ],
+    paginationEnabled: true,
+)]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'app_user')]
 #[ORM\HasLifecycleCallbacks]
@@ -20,16 +43,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 120, nullable: true)]
+    #[Groups(['user:read', 'user:write'])]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 120, nullable: true)]
+    #[Groups(['user:read', 'user:write'])]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Groups(['user:read'])]
     private string $email = '';
 
     #[ORM\Column(length: 255)]
     private string $passwordHash = '';
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['user:read', 'user:write'])]
+    private ?string $avatarUrl = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -60,7 +90,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setEmail(string $email): self
     {
-        $this->email = $email;
+        $this->email = strtolower(trim($email));
 
         return $this;
     }
@@ -114,6 +144,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getPasswordHash(): string
     {
         return $this->passwordHash;
+    }
+
+    public function getAvatarUrl(): ?string
+    {
+        return $this->avatarUrl;
+    }
+
+    public function setAvatarUrl(?string $avatarUrl): self
+    {
+        $this->avatarUrl = $avatarUrl !== null ? trim($avatarUrl) : null;
+
+        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
