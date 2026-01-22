@@ -162,6 +162,10 @@ class Stock
 
     #[ORM\Column(type: 'float', nullable: true)]
     #[Groups(['stock:read'])]
+    private ?float $epsTtm = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $peTtm = null;
 
     #[ORM\Column(type: 'float', nullable: true)]
@@ -183,6 +187,22 @@ class Stock
     #[ORM\Column(type: 'float', nullable: true)]
     #[Groups(['stock:read'])]
     private ?float $week52Low = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $valuationScore = null;
+
+    #[ORM\Column(length: 32, nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?string $valuationLabel = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $valuationConfidence = null;
+
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?\DateTimeImmutable $valuationUpdatedAt = null;
 
     #[ORM\Column]
     #[Groups(['stock:read'])]
@@ -556,6 +576,18 @@ class Stock
         return $this;
     }
 
+    public function getEpsTtm(): ?float
+    {
+        return $this->epsTtm;
+    }
+
+    public function setEpsTtm(?float $epsTtm): self
+    {
+        $this->epsTtm = $epsTtm;
+
+        return $this;
+    }
+
     public function getPeTtm(): ?float
     {
         return $this->peTtm;
@@ -624,6 +656,54 @@ class Stock
     public function setWeek52Low(?float $week52Low): self
     {
         $this->week52Low = $week52Low;
+
+        return $this;
+    }
+
+    public function getValuationScore(): ?float
+    {
+        return $this->valuationScore;
+    }
+
+    public function setValuationScore(?float $valuationScore): self
+    {
+        $this->valuationScore = $valuationScore;
+
+        return $this;
+    }
+
+    public function getValuationLabel(): ?string
+    {
+        return $this->valuationLabel;
+    }
+
+    public function setValuationLabel(?string $valuationLabel): self
+    {
+        $this->valuationLabel = $valuationLabel;
+
+        return $this;
+    }
+
+    public function getValuationConfidence(): ?float
+    {
+        return $this->valuationConfidence;
+    }
+
+    public function setValuationConfidence(?float $valuationConfidence): self
+    {
+        $this->valuationConfidence = $valuationConfidence;
+
+        return $this;
+    }
+
+    public function getValuationUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->valuationUpdatedAt;
+    }
+
+    public function setValuationUpdatedAt(?\DateTimeImmutable $valuationUpdatedAt): self
+    {
+        $this->valuationUpdatedAt = $valuationUpdatedAt;
 
         return $this;
     }

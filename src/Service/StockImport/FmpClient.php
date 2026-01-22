@@ -68,6 +68,7 @@ final class FmpClient implements ProviderClientInterface
             'beta' => ValueCaster::toFloat($profileItem['beta'] ?? null),
             'dividendYield' => ValueCaster::toFloat($ratiosItem['dividendYieldTTM'] ?? null),
             'dividendRate' => ValueCaster::toFloat($profileItem['lastDiv'] ?? $metricsItem['dividendPerShareTTM'] ?? null),
+            'epsTtm' => ValueCaster::toFloat($metricsItem['epsTTM'] ?? $metricsItem['eps'] ?? $ratiosItem['epsTTM'] ?? null),
             'peTtm' => ValueCaster::toFloat($ratiosItem['priceToEarningsRatioTTM'] ?? $ratiosItem['priceEarningsRatioTTM'] ?? $metricsItem['peRatioTTM'] ?? null),
             'pb' => ValueCaster::toFloat($ratiosItem['priceToBookRatioTTM'] ?? null),
             'psTtm' => ValueCaster::toFloat($ratiosItem['priceToSalesRatioTTM'] ?? null),

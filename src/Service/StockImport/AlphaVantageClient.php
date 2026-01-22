@@ -67,6 +67,7 @@ final class AlphaVantageClient implements ProviderClientInterface
             'beta' => ValueCaster::toFloat($overview['Beta'] ?? null),
             'dividendYield' => ValueCaster::toFloat($overview['DividendYield'] ?? null),
             'dividendRate' => ValueCaster::toFloat($overview['DividendPerShare'] ?? null),
+            'epsTtm' => ValueCaster::toFloat($overview['DilutedEPSTTM'] ?? $overview['EPS'] ?? null),
             'peTtm' => ValueCaster::toFloat($overview['PERatio'] ?? null),
             'pb' => ValueCaster::toFloat($overview['PriceToBookRatio'] ?? null),
             'psTtm' => ValueCaster::toFloat($overview['PriceToSalesRatioTTM'] ?? null),

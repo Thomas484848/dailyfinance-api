@@ -54,6 +54,7 @@ final class TwelveDataClient implements ProviderClientInterface
             'changePercent' => ValueCaster::toFloat($quote['percent_change'] ?? null),
             'avgVolume30d' => ValueCaster::toFloat($quote['average_volume'] ?? $quote['volume'] ?? null),
             'quoteTimestamp' => ValueCaster::toDateTime($quote['timestamp'] ?? $quote['datetime'] ?? null),
+            'epsTtm' => ValueCaster::toFloat($profile['eps_ttm'] ?? $profile['eps'] ?? $quote['eps'] ?? null),
         ];
     }
 

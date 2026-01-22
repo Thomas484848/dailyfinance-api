@@ -18,6 +18,7 @@ final class StockImportService
         #[TaggedIterator('stock.provider')] private readonly iterable $clients,
         private readonly array $priorities,
         private readonly StockRefreshLogger $logger,
+        private readonly \App\Service\ValuationScoreService $valuationScoreService,
     ) {
     }
 
@@ -119,6 +120,13 @@ final class StockImportService
         if (isset($merged['priceProvider']) && is_string($merged['priceProvider'])) {
             $stock->setDataSource($merged['priceProvider']);
         }
+        $valuation = $this->valuationScoreService->compute($stock);
+        if ($valuation['score'] !== null) {
+            $stock->setValuationScore($valuation['score']);
+            $stock->setValuationLabel($valuation['label']);
+            $stock->setValuationConfidence($valuation['confidence']);
+            $stock->setValuationUpdatedAt(new \DateTimeImmutable());
+        }
 
         $this->entityManager->persist($stock);
         $this->entityManager->flush();
@@ -169,6 +177,7 @@ final class StockImportService
         $this->setIfNotNull($data, 'beta', $stock->setBeta(...));
         $this->setIfNotNull($data, 'dividendYield', $stock->setDividendYield(...));
         $this->setIfNotNull($data, 'dividendRate', $stock->setDividendRate(...));
+        $this->setIfNotNull($data, 'epsTtm', $stock->setEpsTtm(...));
         $this->setIfNotNull($data, 'peTtm', $stock->setPeTtm(...));
         $this->setIfNotNull($data, 'pb', $stock->setPb(...));
         $this->setIfNotNull($data, 'psTtm', $stock->setPsTtm(...));

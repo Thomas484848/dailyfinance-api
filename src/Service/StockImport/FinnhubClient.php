@@ -53,6 +53,7 @@ final class FinnhubClient implements ProviderClientInterface
             'quoteTimestamp' => ValueCaster::toDateTime($quote['t'] ?? null),
             'beta' => ValueCaster::toFloat($metrics['beta'] ?? null),
             'dividendYield' => ValueCaster::toFloat($metrics['dividendYieldIndicatedAnnual'] ?? null),
+            'epsTtm' => ValueCaster::toFloat($metrics['epsTTM'] ?? $metrics['epsBasicExclExtraItemsTTM'] ?? null),
             'peTtm' => ValueCaster::toFloat($metrics['peTTM'] ?? null),
             'pb' => ValueCaster::toFloat($metrics['pb'] ?? null),
             'psTtm' => ValueCaster::toFloat($metrics['psTTM'] ?? null),

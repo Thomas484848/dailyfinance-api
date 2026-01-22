@@ -55,6 +55,7 @@ final class StockDataMerger
             'quoteTimestamp',
             'beta',
             'dividendRate',
+            'epsTtm',
             'pb',
             'psTtm',
             'evEbitda',
@@ -67,6 +68,14 @@ final class StockDataMerger
                 continue;
             }
             $merged[$field] = $this->pick($dataByProvider, $defaultPriority, $field);
+        }
+
+        if (!isset($merged['peTtm']) || $merged['peTtm'] === null) {
+            $eps = $merged['epsTtm'] ?? null;
+            $price = $merged['lastPrice'] ?? null;
+            if (is_numeric($eps) && is_numeric($price) && (float) $eps > 0.0) {
+                $merged['peTtm'] = (float) $price / (float) $eps;
+            }
         }
 
         return $merged;
