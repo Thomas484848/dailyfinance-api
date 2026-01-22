@@ -23,7 +23,7 @@ RUN sed -ri 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-availabl
    && echo 'ServerName localhost' > /etc/apache2/conf-available/servername.conf \
    && a2enconf servername
 
-RUN composer install --no-dev --optimize-autoloader \
+RUN composer install --no-dev --optimize-autoloader --no-scripts \
  && mkdir -p var \
  && chown -R www-data:www-data var
 
