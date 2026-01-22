@@ -8304,6 +8304,6 @@
             "install-path": "../willdurand/negotiation"
         }
     ],
-    "dev": true,
+    "dev": false,
     "dev-package-names": []
 }
