@@ -18,6 +18,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
             uriTemplate: '/stocks',
             normalizationContext: ['groups' => ['stock:read']]
         ),
+        new \ApiPlatform\Metadata\Get(
+            uriTemplate: '/stocks/{id}',
+            normalizationContext: ['groups' => ['stock:read']]
+        ),
     ],
     paginationEnabled: true
 )]
@@ -190,6 +194,78 @@ class Stock
 
     #[ORM\Column(type: 'float', nullable: true)]
     #[Groups(['stock:read'])]
+    private ?float $revenueTtm = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $revenueGrowthYoy = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $epsGrowthYoy = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $grossMargin = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $operatingMargin = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $netMargin = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $freeCashFlowTtm = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $ebitdaTtm = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $netDebt = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $netDebtEbitda = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $priceToFcf = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $priceToCashFlow = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $returnOnEquity = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $returnOnAssets = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $debtToEquity = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $forwardPe = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $forwardEps = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?float $pegRatio = null;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    #[Groups(['stock:read'])]
     private ?float $valuationScore = null;
 
     #[ORM\Column(length: 32, nullable: true)]
@@ -199,6 +275,14 @@ class Stock
     #[ORM\Column(type: 'float', nullable: true)]
     #[Groups(['stock:read'])]
     private ?float $valuationConfidence = null;
+
+    #[ORM\Column(type: 'json', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?array $valuationBreakdown = null;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(['stock:read'])]
+    private ?string $valuationExplainText = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     #[Groups(['stock:read'])]
@@ -660,6 +744,222 @@ class Stock
         return $this;
     }
 
+    public function getRevenueTtm(): ?float
+    {
+        return $this->revenueTtm;
+    }
+
+    public function setRevenueTtm(?float $revenueTtm): self
+    {
+        $this->revenueTtm = $revenueTtm;
+
+        return $this;
+    }
+
+    public function getRevenueGrowthYoy(): ?float
+    {
+        return $this->revenueGrowthYoy;
+    }
+
+    public function setRevenueGrowthYoy(?float $revenueGrowthYoy): self
+    {
+        $this->revenueGrowthYoy = $revenueGrowthYoy;
+
+        return $this;
+    }
+
+    public function getEpsGrowthYoy(): ?float
+    {
+        return $this->epsGrowthYoy;
+    }
+
+    public function setEpsGrowthYoy(?float $epsGrowthYoy): self
+    {
+        $this->epsGrowthYoy = $epsGrowthYoy;
+
+        return $this;
+    }
+
+    public function getGrossMargin(): ?float
+    {
+        return $this->grossMargin;
+    }
+
+    public function setGrossMargin(?float $grossMargin): self
+    {
+        $this->grossMargin = $grossMargin;
+
+        return $this;
+    }
+
+    public function getOperatingMargin(): ?float
+    {
+        return $this->operatingMargin;
+    }
+
+    public function setOperatingMargin(?float $operatingMargin): self
+    {
+        $this->operatingMargin = $operatingMargin;
+
+        return $this;
+    }
+
+    public function getNetMargin(): ?float
+    {
+        return $this->netMargin;
+    }
+
+    public function setNetMargin(?float $netMargin): self
+    {
+        $this->netMargin = $netMargin;
+
+        return $this;
+    }
+
+    public function getFreeCashFlowTtm(): ?float
+    {
+        return $this->freeCashFlowTtm;
+    }
+
+    public function setFreeCashFlowTtm(?float $freeCashFlowTtm): self
+    {
+        $this->freeCashFlowTtm = $freeCashFlowTtm;
+
+        return $this;
+    }
+
+    public function getEbitdaTtm(): ?float
+    {
+        return $this->ebitdaTtm;
+    }
+
+    public function setEbitdaTtm(?float $ebitdaTtm): self
+    {
+        $this->ebitdaTtm = $ebitdaTtm;
+
+        return $this;
+    }
+
+    public function getNetDebt(): ?float
+    {
+        return $this->netDebt;
+    }
+
+    public function setNetDebt(?float $netDebt): self
+    {
+        $this->netDebt = $netDebt;
+
+        return $this;
+    }
+
+    public function getNetDebtEbitda(): ?float
+    {
+        return $this->netDebtEbitda;
+    }
+
+    public function setNetDebtEbitda(?float $netDebtEbitda): self
+    {
+        $this->netDebtEbitda = $netDebtEbitda;
+
+        return $this;
+    }
+
+    public function getPriceToFcf(): ?float
+    {
+        return $this->priceToFcf;
+    }
+
+    public function setPriceToFcf(?float $priceToFcf): self
+    {
+        $this->priceToFcf = $priceToFcf;
+
+        return $this;
+    }
+
+    public function getPriceToCashFlow(): ?float
+    {
+        return $this->priceToCashFlow;
+    }
+
+    public function setPriceToCashFlow(?float $priceToCashFlow): self
+    {
+        $this->priceToCashFlow = $priceToCashFlow;
+
+        return $this;
+    }
+
+    public function getReturnOnEquity(): ?float
+    {
+        return $this->returnOnEquity;
+    }
+
+    public function setReturnOnEquity(?float $returnOnEquity): self
+    {
+        $this->returnOnEquity = $returnOnEquity;
+
+        return $this;
+    }
+
+    public function getReturnOnAssets(): ?float
+    {
+        return $this->returnOnAssets;
+    }
+
+    public function setReturnOnAssets(?float $returnOnAssets): self
+    {
+        $this->returnOnAssets = $returnOnAssets;
+
+        return $this;
+    }
+
+    public function getDebtToEquity(): ?float
+    {
+        return $this->debtToEquity;
+    }
+
+    public function setDebtToEquity(?float $debtToEquity): self
+    {
+        $this->debtToEquity = $debtToEquity;
+
+        return $this;
+    }
+
+    public function getForwardPe(): ?float
+    {
+        return $this->forwardPe;
+    }
+
+    public function setForwardPe(?float $forwardPe): self
+    {
+        $this->forwardPe = $forwardPe;
+
+        return $this;
+    }
+
+    public function getForwardEps(): ?float
+    {
+        return $this->forwardEps;
+    }
+
+    public function setForwardEps(?float $forwardEps): self
+    {
+        $this->forwardEps = $forwardEps;
+
+        return $this;
+    }
+
+    public function getPegRatio(): ?float
+    {
+        return $this->pegRatio;
+    }
+
+    public function setPegRatio(?float $pegRatio): self
+    {
+        $this->pegRatio = $pegRatio;
+
+        return $this;
+    }
+
     public function getValuationScore(): ?float
     {
         return $this->valuationScore;
@@ -692,6 +992,30 @@ class Stock
     public function setValuationConfidence(?float $valuationConfidence): self
     {
         $this->valuationConfidence = $valuationConfidence;
+
+        return $this;
+    }
+
+    public function getValuationBreakdown(): ?array
+    {
+        return $this->valuationBreakdown;
+    }
+
+    public function setValuationBreakdown(?array $valuationBreakdown): self
+    {
+        $this->valuationBreakdown = $valuationBreakdown;
+
+        return $this;
+    }
+
+    public function getValuationExplainText(): ?string
+    {
+        return $this->valuationExplainText;
+    }
+
+    public function setValuationExplainText(?string $valuationExplainText): self
+    {
+        $this->valuationExplainText = $valuationExplainText;
 
         return $this;
     }

@@ -125,6 +125,8 @@ final class StockImportService
             $stock->setValuationScore($valuation['score']);
             $stock->setValuationLabel($valuation['label']);
             $stock->setValuationConfidence($valuation['confidence']);
+            $stock->setValuationBreakdown($valuation['breakdown'] ?? []);
+            $stock->setValuationExplainText($valuation['explain'] ?? null);
             $stock->setValuationUpdatedAt(new \DateTimeImmutable());
         }
 
@@ -179,11 +181,45 @@ final class StockImportService
         $this->setIfNotNull($data, 'dividendRate', $stock->setDividendRate(...));
         $this->setIfNotNull($data, 'epsTtm', $stock->setEpsTtm(...));
         $this->setIfNotNull($data, 'peTtm', $stock->setPeTtm(...));
+        $this->setIfNotNull($data, 'revenueTtm', $stock->setRevenueTtm(...));
+        $this->setIfNotNull($data, 'revenueGrowthYoy', $stock->setRevenueGrowthYoy(...));
+        $this->setIfNotNull($data, 'epsGrowthYoy', $stock->setEpsGrowthYoy(...));
+        $this->setIfNotNull($data, 'grossMargin', $stock->setGrossMargin(...));
+        $this->setIfNotNull($data, 'operatingMargin', $stock->setOperatingMargin(...));
+        $this->setIfNotNull($data, 'netMargin', $stock->setNetMargin(...));
+        $this->setIfNotNull($data, 'freeCashFlowTtm', $stock->setFreeCashFlowTtm(...));
+        $this->setIfNotNull($data, 'ebitdaTtm', $stock->setEbitdaTtm(...));
+        $this->setIfNotNull($data, 'netDebt', $stock->setNetDebt(...));
+        $this->setIfNotNull($data, 'netDebtEbitda', $stock->setNetDebtEbitda(...));
+        $this->setIfNotNull($data, 'priceToFcf', $stock->setPriceToFcf(...));
+        $this->setIfNotNull($data, 'priceToCashFlow', $stock->setPriceToCashFlow(...));
+        $this->setIfNotNull($data, 'returnOnEquity', $stock->setReturnOnEquity(...));
+        $this->setIfNotNull($data, 'returnOnAssets', $stock->setReturnOnAssets(...));
+        $this->setIfNotNull($data, 'debtToEquity', $stock->setDebtToEquity(...));
+        $this->setIfNotNull($data, 'forwardPe', $stock->setForwardPe(...));
+        $this->setIfNotNull($data, 'forwardEps', $stock->setForwardEps(...));
+        $this->setIfNotNull($data, 'pegRatio', $stock->setPegRatio(...));
         $this->setIfNotNull($data, 'pb', $stock->setPb(...));
         $this->setIfNotNull($data, 'psTtm', $stock->setPsTtm(...));
         $this->setIfNotNull($data, 'evEbitda', $stock->setEvEbitda(...));
         $this->setIfNotNull($data, 'week52High', $stock->setWeek52High(...));
         $this->setIfNotNull($data, 'week52Low', $stock->setWeek52Low(...));
+
+        if ($stock->getNetDebtEbitda() === null) {
+            $netDebt = $stock->getNetDebt();
+            $ebitda = $stock->getEbitdaTtm();
+            if ($netDebt !== null && $ebitda !== null && $ebitda > 0.0) {
+                $stock->setNetDebtEbitda($netDebt / $ebitda);
+            }
+        }
+
+        if ($stock->getForwardEps() === null) {
+            $forwardPe = $stock->getForwardPe();
+            $price = $stock->getLastPrice();
+            if ($forwardPe !== null && $forwardPe > 0.0 && $price !== null) {
+                $stock->setForwardEps($price / $forwardPe);
+            }
+        }
     }
 
     /**

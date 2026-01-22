@@ -68,6 +68,18 @@ services:
                     rpm: '%env(int:TWELVEDATA_RPM)%'
                     rpd: '%env(int:TWELVEDATA_RPD)%'
                     maxConcurrent: '%env(int:TWELVEDATA_MAX_CONCURRENT)%'
+                polygon:
+                    rpm: '%env(int:POLYGON_RPM)%'
+                    rpd: '%env(int:POLYGON_RPD)%'
+                    maxConcurrent: '%env(int:POLYGON_MAX_CONCURRENT)%'
+                intrinio:
+                    rpm: '%env(int:INTRINIO_RPM)%'
+                    rpd: '%env(int:INTRINIO_RPD)%'
+                    maxConcurrent: '%env(int:INTRINIO_MAX_CONCURRENT)%'
+                intrinio_zacks:
+                    rpm: '%env(int:INTRINIO_ZACKS_RPM)%'
+                    rpd: '%env(int:INTRINIO_ZACKS_RPD)%'
+                    maxConcurrent: '%env(int:INTRINIO_ZACKS_MAX_CONCURRENT)%'
             $logger: '@App\Service\StockImport\StockRefreshLogger'
 
     App\Service\StockImport\StockImportService:
@@ -92,6 +104,33 @@ services:
     App\Service\StockImport\TwelveDataClient:
         tags: ['stock.provider']
 
+    App\Service\StockImport\PolygonRatiosClient:
+        tags: ['stock.provider']
+
+    App\Service\StockImport\IntrinioDataPointClient:
+        arguments:
+            $apiKey: '%env(INTRINIO_API_KEY)%'
+            $apiSecret: '%env(INTRINIO_API_SECRET)%'
+            $tagMap:
+                revenueTtm: '%env(default:INTRINIO_TAG_REVENUE_TTM)%'
+                revenueGrowthYoy: '%env(default:INTRINIO_TAG_REVENUE_GROWTH_YOY)%'
+                epsGrowthYoy: '%env(default:INTRINIO_TAG_EPS_GROWTH_YOY)%'
+                grossMargin: '%env(default:INTRINIO_TAG_GROSS_MARGIN)%'
+                operatingMargin: '%env(default:INTRINIO_TAG_OPERATING_MARGIN)%'
+                netMargin: '%env(default:INTRINIO_TAG_NET_MARGIN)%'
+                freeCashFlowTtm: '%env(default:INTRINIO_TAG_FREE_CASH_FLOW_TTM)%'
+                ebitdaTtm: '%env(default:INTRINIO_TAG_EBITDA_TTM)%'
+                netDebt: '%env(default:INTRINIO_TAG_NET_DEBT)%'
+                totalDebt: '%env(default:INTRINIO_TAG_TOTAL_DEBT)%'
+                cashAndEquivalents: '%env(default:INTRINIO_TAG_CASH_EQUIV)%'
+        tags: ['stock.provider']
+
+    App\Service\StockImport\IntrinioZacksForwardPeClient:
+        arguments:
+            $apiKey: '%env(INTRINIO_API_KEY)%'
+            $apiSecret: '%env(INTRINIO_API_SECRET)%'
+        tags: ['stock.provider']
+
     App\Command\StocksRefreshCommand:
         arguments:
             $loopSleepMs: '%env(int:REFRESH_LOOP_SLEEP_MS)%'
@@ -110,4 +149,3 @@ services:
     App\Command\StockUniverseBuildCommand:
         arguments:
             $defaultOutput: '%kernel.project_dir%/var/stock_universe.json'
-
