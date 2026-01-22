@@ -112,17 +112,17 @@ services:
             $apiKey: '%env(INTRINIO_API_KEY)%'
             $apiSecret: '%env(INTRINIO_API_SECRET)%'
             $tagMap:
-                revenueTtm: '%env(default:INTRINIO_TAG_REVENUE_TTM)%'
-                revenueGrowthYoy: '%env(default:INTRINIO_TAG_REVENUE_GROWTH_YOY)%'
-                epsGrowthYoy: '%env(default:INTRINIO_TAG_EPS_GROWTH_YOY)%'
-                grossMargin: '%env(default:INTRINIO_TAG_GROSS_MARGIN)%'
-                operatingMargin: '%env(default:INTRINIO_TAG_OPERATING_MARGIN)%'
-                netMargin: '%env(default:INTRINIO_TAG_NET_MARGIN)%'
-                freeCashFlowTtm: '%env(default:INTRINIO_TAG_FREE_CASH_FLOW_TTM)%'
-                ebitdaTtm: '%env(default:INTRINIO_TAG_EBITDA_TTM)%'
-                netDebt: '%env(default:INTRINIO_TAG_NET_DEBT)%'
-                totalDebt: '%env(default:INTRINIO_TAG_TOTAL_DEBT)%'
-                cashAndEquivalents: '%env(default:INTRINIO_TAG_CASH_EQUIV)%'
+                revenueTtm: '%env(default::INTRINIO_TAG_REVENUE_TTM)%'
+                revenueGrowthYoy: '%env(default::INTRINIO_TAG_REVENUE_GROWTH_YOY)%'
+                epsGrowthYoy: '%env(default::INTRINIO_TAG_EPS_GROWTH_YOY)%'
+                grossMargin: '%env(default::INTRINIO_TAG_GROSS_MARGIN)%'
+                operatingMargin: '%env(default::INTRINIO_TAG_OPERATING_MARGIN)%'
+                netMargin: '%env(default::INTRINIO_TAG_NET_MARGIN)%'
+                freeCashFlowTtm: '%env(default::INTRINIO_TAG_FREE_CASH_FLOW_TTM)%'
+                ebitdaTtm: '%env(default::INTRINIO_TAG_EBITDA_TTM)%'
+                netDebt: '%env(default::INTRINIO_TAG_NET_DEBT)%'
+                totalDebt: '%env(default::INTRINIO_TAG_TOTAL_DEBT)%'
+                cashAndEquivalents: '%env(default::INTRINIO_TAG_CASH_EQUIV)%'
         tags: ['stock.provider']
 
     App\Service\StockImport\IntrinioZacksForwardPeClient:
