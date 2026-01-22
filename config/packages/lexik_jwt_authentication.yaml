@@ -10,12 +10,13 @@ lexik_jwt_authentication:
             prefix: Bearer
             name: Authorization
         cookie:
-            enabled: false
-        query_parameter:
-            enabled: false
-    set_cookies:
-        BEARER:
-            secure: false
-            httpOnly: true
-            same site: lax
-            path: /
+            enabled: true
+            name: BEARER
+
+        set_cookies:
+            BEARER:
+                lifetime: 3600
+                path: /
+                secure: false
+                httpOnly: true
+                samesite: lax
