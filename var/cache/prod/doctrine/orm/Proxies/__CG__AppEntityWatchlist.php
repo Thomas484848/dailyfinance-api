@@ -22,6 +22,8 @@ class Watchlist extends \App\Entity\Watchlist implements \Doctrine\ORM\Proxy\Int
     
 
     private const LAZY_OBJECT_PROPERTY_SCOPES = [
+        "\0".parent::class."\0".'color' => [parent::class, 'color', null, 16],
+        "\0".parent::class."\0".'coverImage' => [parent::class, 'coverImage', null, 16],
         "\0".parent::class."\0".'createdAt' => [parent::class, 'createdAt', null, 16],
         "\0".parent::class."\0".'description' => [parent::class, 'description', null, 16],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null, 16],
@@ -30,6 +32,8 @@ class Watchlist extends \App\Entity\Watchlist implements \Doctrine\ORM\Proxy\Int
         "\0".parent::class."\0".'name' => [parent::class, 'name', null, 16],
         "\0".parent::class."\0".'updatedAt' => [parent::class, 'updatedAt', null, 16],
         "\0".parent::class."\0".'user' => [parent::class, 'user', null, 16],
+        'color' => [parent::class, 'color', null, 16],
+        'coverImage' => [parent::class, 'coverImage', null, 16],
         'createdAt' => [parent::class, 'createdAt', null, 16],
         'description' => [parent::class, 'description', null, 16],
         'id' => [parent::class, 'id', null, 16],

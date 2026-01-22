@@ -668,7 +668,7 @@ class ApiPlatformConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     /**
      * @template TValue of array|bool
      * @param TValue $value
-     * @default {"enabled":false}
+     * @default {"enabled":true}
      * @return \Symfony\Config\ApiPlatform\MessengerConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\ApiPlatform\MessengerConfig : static)
      * @deprecated since Symfony 7.4

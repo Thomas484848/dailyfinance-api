@@ -21,6 +21,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Security\JwtLoginSuccessHandler: ~
 
     App\OpenApi\LoginRequestExampleOpenApiFactory:
         decorates: 'lexik_jwt_authentication.api_platform.openapi.factory'
@@ -109,3 +110,4 @@ services:
     App\Command\StockUniverseBuildCommand:
         arguments:
             $defaultOutput: '%kernel.project_dir%/var/stock_universe.json'
+

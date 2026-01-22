@@ -1062,7 +1062,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Messenger configuration
-     * @default {"enabled":false,"routing":[],"serializer":{"default_serializer":"messenger.transport.native_php_serializer","symfony_serializer":{"format":"json","context":[]}},"transports":[],"failure_transport":null,"stop_worker_on_signals":[],"default_bus":null,"buses":{"messenger.bus.default":{"default_middleware":{"enabled":true,"allow_no_handlers":false,"allow_no_senders":true},"middleware":[]}}}
+     * @default {"enabled":true,"routing":[],"serializer":{"default_serializer":"messenger.transport.native_php_serializer","symfony_serializer":{"format":"json","context":[]}},"transports":[],"failure_transport":null,"stop_worker_on_signals":[],"default_bus":null,"buses":{"messenger.bus.default":{"default_middleware":{"enabled":true,"allow_no_handlers":false,"allow_no_senders":true},"middleware":[]}}}
      * @return \Symfony\Config\Framework\MessengerConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\MessengerConfig : static)
      * @deprecated since Symfony 7.4
@@ -1091,7 +1091,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Scheduler configuration
-     * @default {"enabled":false}
+     * @default {"enabled":true}
      * @return \Symfony\Config\Framework\SchedulerConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\SchedulerConfig : static)
      * @deprecated since Symfony 7.4

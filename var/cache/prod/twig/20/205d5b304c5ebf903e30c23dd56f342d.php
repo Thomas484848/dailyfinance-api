@@ -44,34 +44,34 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
     protected function doDisplay(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 1
+        // line 2
         yield "<!DOCTYPE html>
 <html>
 <head>
     ";
-        // line 4
+        // line 5
         yield from $this->unwrap()->yieldBlock('head_metas', $context, $blocks);
-        // line 7
-        yield "
-    ";
         // line 8
+        yield "
+    ";
+        // line 9
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
-        // line 11
-        yield "
-    ";
         // line 12
+        yield "
+    ";
+        // line 13
         yield from $this->unwrap()->yieldBlock('stylesheet', $context, $blocks);
-        // line 18
-        yield "
-    ";
         // line 19
-        $context["oauth_data"] = ["oauth" => Twig\Extension\CoreExtension::merge(CoreExtension::getAttribute($this->env, $this->source, ($context["swagger_data"] ?? null), "oauth", [], "any", false, false, false, 19), ["redirectUrl" => $this->extensions['Symfony\Bridge\Twig\Extension\HttpFoundationExtension']->generateAbsoluteUrl($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/swagger-ui/oauth2-redirect.html", ($context["assetPackage"] ?? null)))])];
-        // line 20
         yield "
     ";
+        // line 20
+        $context["oauth_data"] = ["oauth" => Twig\Extension\CoreExtension::merge(CoreExtension::getAttribute($this->env, $this->source, ($context["swagger_data"] ?? null), "oauth", [], "any", false, false, false, 20), ["redirectUrl" => $this->extensions['Symfony\Bridge\Twig\Extension\HttpFoundationExtension']->generateAbsoluteUrl($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/swagger-ui/oauth2-redirect.html", ($context["assetPackage"] ?? null)))])];
         // line 21
+        yield "
+    ";
+        // line 22
         yield from $this->unwrap()->yieldBlock('head_javascript', $context, $blocks);
-        // line 25
+        // line 26
         yield "</head>
 
 <body>
@@ -97,7 +97,6 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
             <path d=\"M17.418 6.109c.272-.268.709-.268.979 0s.271.701 0 .969l-7.908 7.83c-.27.268-.707.268-.979 0l-7.908-7.83c-.27-.268-.27-.701 0-.969.271-.268.709-.268.979 0L10 13.25l7.418-7.141z\"></path>
         </symbol>
 
-
         <symbol viewBox=\"0 0 24 24\" id=\"jump-to\">
             <path d=\"M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z\"></path>
         </symbol>
@@ -105,29 +104,28 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
         <symbol viewBox=\"0 0 24 24\" id=\"expand\">
             <path d=\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\"></path>
         </symbol>
-
     </defs>
 </svg>
 
 ";
-        // line 62
+        // line 61
         yield from $this->unwrap()->yieldBlock('header', $context, $blocks);
-        // line 67
+        // line 68
         yield "
 ";
-        // line 68
+        // line 69
         if ((($tmp = ($context["showWebby"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 69
+            // line 70
             yield "    <div class=\"web\"><img src=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/web.png", ($context["assetPackage"] ?? null)), "html", null, true);
             yield "\"></div>
     <div class=\"webby\"><img src=\"";
-            // line 70
+            // line 71
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/webby.png", ($context["assetPackage"] ?? null)), "html", null, true);
             yield "\"></div>
 ";
         }
-        // line 72
+        // line 73
         yield "
 <div id=\"swagger-ui\" class=\"api-platform\"></div>
 
@@ -136,11 +134,11 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
         <div class=\"info\">
             Available formats:
             ";
-        // line 79
+        // line 80
         $context['_parent'] = $context;
         $context['_seq'] = CoreExtension::ensureTraversable(Twig\Extension\CoreExtension::keys(($context["formats"] ?? null)));
         foreach ($context['_seq'] as $context["_key"] => $context["format"]) {
-            // line 80
+            // line 81
             yield "                <a href=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath(($context["originalRoute"] ?? null), Twig\Extension\CoreExtension::merge(($context["originalRouteParams"] ?? null), ["_format" => $context["format"]])), "html", null, true);
             yield "\">";
@@ -151,27 +149,27 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['format'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 82
+        // line 83
         yield "            <br>
             Other API docs:
             ";
-        // line 84
-        $context["active_ui"] = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "request", [], "any", false, false, false, 84), "query", [], "any", false, false, false, 84), "get", ["ui", "swagger_ui"], "method", false, false, false, 84);
         // line 85
+        $context["active_ui"] = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "request", [], "any", false, false, false, 85), "query", [], "any", false, false, false, 85), "get", ["ui", "swagger_ui"], "method", false, false, false, 85);
+        // line 86
         yield "            ";
         if ((($context["swaggerUiEnabled"] ?? null) && (($context["active_ui"] ?? null) != "swagger_ui"))) {
             yield "<a href=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath(($context["originalRoute"] ?? null), ($context["originalRouteParams"] ?? null)), "html", null, true);
             yield "\">Swagger UI</a>";
         }
-        // line 86
+        // line 87
         yield "            ";
         if ((($context["reDocEnabled"] ?? null) && (($context["active_ui"] ?? null) != "re_doc"))) {
             yield "<a href=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath(($context["originalRoute"] ?? null), Twig\Extension\CoreExtension::merge(($context["originalRouteParams"] ?? null), ["ui" => "re_doc"])), "html", null, true);
             yield "\">ReDoc</a>";
         }
-        // line 87
+        // line 88
         yield "            ";
         if (( !($context["graphQlEnabled"] ?? null) || ($context["graphiQlEnabled"] ?? null))) {
             yield "<a ";
@@ -182,15 +180,15 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
             }
             yield " class=\"graphiql-link\">GraphiQL</a>";
         }
-        // line 88
+        // line 89
         yield "        </div>
     </div>
 </div>
 
 ";
-        // line 92
+        // line 93
         yield from $this->unwrap()->yieldBlock('javascript', $context, $blocks);
-        // line 103
+        // line 330
         yield "
 </body>
 </html>
@@ -198,27 +196,27 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
         yield from [];
     }
 
-    // line 4
+    // line 5
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_head_metas(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 5
+        // line 6
         yield "        <meta charset=\"UTF-8\">
     ";
         yield from [];
     }
 
-    // line 8
+    // line 9
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_title(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 9
+        // line 10
         yield "        <title>";
         if ((($tmp = ($context["title"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["title"] ?? null), "html", null, true);
@@ -229,43 +227,43 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
         yield from [];
     }
 
-    // line 12
+    // line 13
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheet(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 13
+        // line 14
         yield "        <link rel=\"stylesheet\" href=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/fonts/open-sans/400.css", ($context["assetPackage"] ?? null)), "html", null, true);
         yield "\">
         <link rel=\"stylesheet\" href=\"";
-        // line 14
+        // line 15
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/fonts/open-sans/700.css", ($context["assetPackage"] ?? null)), "html", null, true);
         yield "\">
         <link rel=\"stylesheet\" href=\"";
-        // line 15
+        // line 16
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/swagger-ui/swagger-ui.css", ($context["assetPackage"] ?? null)), "html", null, true);
         yield "\">
         <link rel=\"stylesheet\" href=\"";
-        // line 16
+        // line 17
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/style.css", ($context["assetPackage"] ?? null)), "html", null, true);
         yield "\">
     ";
         yield from [];
     }
 
-    // line 21
+    // line 22
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_head_javascript(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 22
-        yield "        ";
         // line 23
+        yield "        ";
+        // line 24
         yield "        <script id=\"swagger-data\" type=\"application/json\">";
         yield json_encode(Twig\Extension\CoreExtension::merge(($context["swagger_data"] ?? null), ($context["oauth_data"] ?? null)), 65);
         yield "</script>
@@ -273,60 +271,289 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
         yield from [];
     }
 
-    // line 62
+    // line 61
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_header(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 63
+        // line 62
         yield "    <header>
-        <a id=\"logo\" href=\"https://api-platform.com\"><img src=\"";
+        <a id=\"logo\" href=\"https://api-platform.com\">
+            <img src=\"";
         // line 64
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/logo-header.svg", ($context["assetPackage"] ?? null)), "html", null, true);
-        yield "\" alt=\"API Platform\"></a>
+        yield "\" alt=\"API Platform\">
+        </a>
     </header>
 ";
         yield from [];
     }
 
-    // line 92
+    // line 93
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascript(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 93
-        yield "    ";
+        // line 94
         if (((($context["reDocEnabled"] ?? null) &&  !($context["swaggerUiEnabled"] ?? null)) || (($context["reDocEnabled"] ?? null) && ("re_doc" == ($context["active_ui"] ?? null))))) {
-            // line 94
-            yield "        <script src=\"";
+            // line 95
+            yield "    <script src=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/redoc/redoc.standalone.js", ($context["assetPackage"] ?? null)), "html", null, true);
             yield "\"></script>
-        <script src=\"";
-            // line 95
+    <script src=\"";
+            // line 96
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/init-redoc-ui.js", ($context["assetPackage"] ?? null)), "html", null, true);
             yield "\"></script>
-    ";
+";
         } else {
-            // line 97
-            yield "        <script src=\"";
+            // line 98
+            yield "    <script src=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/swagger-ui/swagger-ui-bundle.js", ($context["assetPackage"] ?? null)), "html", null, true);
             yield "\"></script>
-        <script src=\"";
-            // line 98
+    <script src=\"";
+            // line 99
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/swagger-ui/swagger-ui-standalone-preset.js", ($context["assetPackage"] ?? null)), "html", null, true);
             yield "\"></script>
-        <script src=\"";
-            // line 99
+
+    ";
+            // line 102
+            yield "    <script>
+      (function () {
+        const DEBUG = false;
+        const log = DEBUG ? console.log.bind(console, \"### [APIP]\") : function(){};
+        const warn = DEBUG ? console.warn.bind(console, \"### [APIP]\") : function(){};
+
+        const TOKEN_KEY = \"jwt_token\";
+        const LOGIN_RE = /\\/api\\/login(\\?|\$)/;
+
+        function getToken() {
+          try { return sessionStorage.getItem(TOKEN_KEY); }
+          catch (e) { return null; }
+        }
+        function setToken(token) {
+          try { sessionStorage.setItem(TOKEN_KEY, token); } catch (e) {}
+        }
+
+        function waitFor(predicate, maxMs, label) {
+          const start = Date.now();
+          return new Promise(resolve => {
+            (function tick() {
+              let ok = false;
+              try { ok = !!predicate(); } catch (e) {}
+              if (ok) return resolve(true);
+              if (Date.now() - start > maxMs) {
+                warn(\"waitFor TIMEOUT:\", label);
+                return resolve(false);
+              }
+              setTimeout(tick, 100);
+            })();
+          });
+        }
+
+        function getSystemFromUi(ui) {
+          try {
+            if (!ui) return null;
+            if (typeof ui.getSystem === \"function\") return ui.getSystem();
+            if (ui.system) return ui.system;
+            return null;
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function hookSwaggerUiBundle() {
+          if (window.__apipHookedFactory) return true;
+
+          const factoryName = (typeof window.SwaggerUIBundle === \"function\") ? \"SwaggerUIBundle\"
+                            : (typeof window.SwaggerUI === \"function\") ? \"SwaggerUI\"
+                            : null;
+
+          if (!factoryName) return false;
+
+          const original = window[factoryName];
+          if (typeof original !== \"function\") return false;
+
+          window.__apipHookedFactory = true;
+
+          window[factoryName] = function (config) {
+            // Force disable persistAuthorization (évite les soucis cookie/persist internes)
+            config = config || {};
+            config.persistAuthorization = false;
+
+            // ⚠️ Important : passer CONFIG MODIFIÉ, pas \"arguments\"
+            const ui = original.call(this, config);
+
+            window.__apipUi = ui;
+            window.__apipSystem = getSystemFromUi(ui);
+
+            // tente authorize si token déjà là
+            applyAuthorizeWhenReady(\"captured-ui\");
+            return ui;
+          };
+
+          // copy static props
+          for (const k in original) {
+            try { window[factoryName][k] = original[k]; } catch(e) {}
+          }
+
+          return true;
+        }
+
+        async function getSystem() {
+          if (window.__apipSystem) return window.__apipSystem;
+
+          const okFactory = await waitFor(
+            () => typeof window.SwaggerUIBundle === \"function\" || typeof window.SwaggerUI === \"function\",
+            10000,
+            \"SwaggerUIBundle/SwaggerUI factory\"
+          );
+          if (!okFactory) return null;
+
+          hookSwaggerUiBundle();
+
+          const okUi = await waitFor(() => !!window.__apipUi, 10000, \"__apipUi instance\");
+          if (!okUi) return null;
+
+          window.__apipSystem = getSystemFromUi(window.__apipUi);
+
+          const okSystem = await waitFor(() => !!getSystemFromUi(window.__apipUi), 5000, \"ui system\");
+          if (!okSystem) return null;
+
+          window.__apipSystem = getSystemFromUi(window.__apipUi);
+          return window.__apipSystem;
+        }
+
+        async function applyAuthorizeWhenReady(reason) {
+          const tokenRaw = getToken();
+          if (!tokenRaw) return false;
+
+          const token = tokenRaw.startsWith(\"Bearer \") ? tokenRaw.slice(7) : tokenRaw;
+
+          const system = await getSystem();
+          if (!system) return false;
+
+          const okSchemes = await waitFor(() => {
+            try {
+              const spec = system.specSelectors.specJson().toJS();
+              const schemes = spec && spec.components && spec.components.securitySchemes;
+              return schemes && Object.keys(schemes).length > 0;
+            } catch (e) { return false; }
+          }, 10000, \"securitySchemes\");
+
+          if (!okSchemes) return false;
+
+          const spec = system.specSelectors.specJson().toJS();
+          const schemes = spec.components.securitySchemes;
+
+          // ✅ Chez toi le scheme s'appelle \"JWT\"
+          const schemeName = schemes.JWT ? \"JWT\" : Object.keys(schemes)[0];
+          const scheme = schemes[schemeName];
+
+          if (!system.authActions || !system.authActions.authorize) return false;
+
+          // Evite de spam authorize 15 fois
+          if (window.__apipAuthorizedOnce) return true;
+          window.__apipAuthorizedOnce = true;
+
+          // Swagger UI: pour http/bearer -> value doit être le TOKEN (sans \"Bearer \")
+          const isHttpBearer = scheme && scheme.type === \"http\" && String(scheme.scheme || \"\").toLowerCase() === \"bearer\";
+
+          const authPayload = {
+            [schemeName]: {
+              name: schemeName,
+              schema: scheme,
+              value: isHttpBearer ? token : (\"Bearer \" + token)
+            }
+          };
+
+          try {
+            system.authActions.authorize(authPayload);
+          } catch (e) {
+            // si jamais ça throw, on autorise une nouvelle tentative plus tard
+            window.__apipAuthorizedOnce = false;
+            return false;
+          }
+
+          return true;
+        }
+
+        function wrapFetchOnce() {
+          if (window.__apipFetchWrapped) return;
+          window.__apipFetchWrapped = true;
+
+          const originalFetch = window.fetch;
+
+          window.fetch = async function (input, init) {
+            let url = \"\";
+            try { url = (typeof input === \"string\") ? input : (input && input.url) ? input.url : \"\"; } catch (e) {}
+
+            init = init || {};
+            init.headers = init.headers || {};
+
+            const tokenRaw = getToken();
+            const isLogin = LOGIN_RE.test(url);
+
+            // Ajoute Authorization sur toutes les routes sauf /api/login
+            if (tokenRaw && !isLogin) {
+              const token = tokenRaw.startsWith(\"Bearer \") ? tokenRaw.slice(7) : tokenRaw;
+              init.headers[\"Authorization\"] = \"Bearer \" + token;
+            }
+
+            const res = await originalFetch(input, init);
+
+            // Capture token si /api/login renvoie du JSON {token: ...}
+            // (Chez toi /api/login renvoie 204 + Set-Cookie => ici ça ne déclenchera pas)
+            try {
+              if (isLogin && res && res.ok) {
+                const clone = res.clone();
+                const data = await clone.json().catch(() => null);
+
+                const t = data && (data.token || data.access_token || data.jwt);
+                if (t) {
+                  setToken(t);
+                  window.__apipAuthorizedOnce = false;
+                  applyAuthorizeWhenReady(\"after-login\");
+                }
+              }
+            } catch (e) {}
+
+            return res;
+          };
+        }
+
+        // Install ASAP
+        wrapFetchOnce();
+
+        // Hook factory ASAP (poll)
+        (function pollHook() {
+          if (hookSwaggerUiBundle()) return;
+          setTimeout(pollHook, 50);
+        })();
+
+        // Try authorize on load if token already exists
+        applyAuthorizeWhenReady(\"page-load\");
+
+        // ✅ IMPORTANT : comme ton /api/login renvoie 204 + Set-Cookie,
+        // ton token n'est PAS lisible en JS (httpOnly) => il faut soit:
+        // - activer extractor cookie côté backend (déjà fait), et là ça marche sans \"Authorize\",
+        // - OU changer login pour renvoyer JSON {token} si tu veux remplir Swagger Authorize.
+      })();
+    </script>
+
+    <script src=\"";
+            // line 325
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/init-swagger-ui.js", ($context["assetPackage"] ?? null)), "html", null, true);
             yield "\"></script>
-    ";
+";
         }
-        // line 101
-        yield "    <script src=\"";
+        // line 327
+        yield "
+<script src=\"";
+        // line 328
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bundles/apiplatform/init-common-ui.js", ($context["assetPackage"] ?? null)), "html", null, true);
         yield "\" defer></script>
 ";
@@ -354,7 +581,7 @@ class __TwigTemplate_492428051afbb3420a8716b46c43f186 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  329 => 101,  324 => 99,  320 => 98,  315 => 97,  310 => 95,  305 => 94,  302 => 93,  295 => 92,  287 => 64,  284 => 63,  277 => 62,  269 => 23,  267 => 22,  260 => 21,  253 => 16,  249 => 15,  245 => 14,  240 => 13,  233 => 12,  222 => 9,  215 => 8,  209 => 5,  202 => 4,  194 => 103,  192 => 92,  186 => 88,  175 => 87,  168 => 86,  161 => 85,  159 => 84,  155 => 82,  144 => 80,  140 => 79,  131 => 72,  126 => 70,  121 => 69,  119 => 68,  116 => 67,  114 => 62,  75 => 25,  73 => 21,  70 => 20,  68 => 19,  65 => 18,  63 => 12,  60 => 11,  58 => 8,  55 => 7,  53 => 4,  48 => 1,);
+        return array (  557 => 328,  554 => 327,  549 => 325,  324 => 102,  319 => 99,  314 => 98,  309 => 96,  304 => 95,  302 => 94,  295 => 93,  286 => 64,  282 => 62,  275 => 61,  267 => 24,  265 => 23,  258 => 22,  251 => 17,  247 => 16,  243 => 15,  238 => 14,  231 => 13,  220 => 10,  213 => 9,  207 => 6,  200 => 5,  192 => 330,  190 => 93,  184 => 89,  173 => 88,  166 => 87,  159 => 86,  157 => 85,  153 => 83,  142 => 81,  138 => 80,  129 => 73,  124 => 71,  119 => 70,  117 => 69,  114 => 68,  112 => 61,  75 => 26,  73 => 22,  70 => 21,  68 => 20,  65 => 19,  63 => 13,  60 => 12,  58 => 9,  55 => 8,  53 => 5,  48 => 2,);
     }
 
     public function getSourceContext(): Source

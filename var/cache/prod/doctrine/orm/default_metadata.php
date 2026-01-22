@@ -6,9 +6,10 @@ return [[
 
 'App__Entity__PasswordResetToken__CLASSMETADATA__' => 0,
 'App__Entity__Stock__CLASSMETADATA__' => 1,
-'App__Entity__User__CLASSMETADATA__' => 2,
-'App__Entity__Watchlist__CLASSMETADATA__' => 3,
-'App__Entity__WatchlistItem__CLASSMETADATA__' => 4,
+'App__Entity__StockPriceHistory__CLASSMETADATA__' => 2,
+'App__Entity__User__CLASSMETADATA__' => 3,
+'App__Entity__Watchlist__CLASSMETADATA__' => 4,
+'App__Entity__WatchlistItem__CLASSMETADATA__' => 5,
 
 ], [
 
@@ -520,8 +521,8 @@ return [[
             ],
             'length' => [
                 2 => 32,
-                16,
-                16,
+                64,
+                64,
                 32,
                 255,
                 64,
@@ -601,6 +602,171 @@ return [[
     []
 ); } },
 2 => new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Mapping\\FieldMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\FieldMapping')),
+        clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
+        clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
+        clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
+        clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
+        clone ($p['Doctrine\\ORM\\Mapping\\ManyToOneAssociationMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOneAssociationMapping')),
+        clone ($p['Doctrine\\ORM\\Mapping\\JoinColumnMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumnMapping')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\StockPriceHistory',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => $o[1],
+                    'timestamp' => $o[2],
+                    'price' => $o[3],
+                    'volume' => $o[4],
+                    'source' => $o[5],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'timestamp' => 'timestamp',
+                    'price' => 'price',
+                    'volume' => 'volume',
+                    'source' => 'source',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'timestamp' => 'timestamp',
+                    'price' => 'price',
+                    'volume' => 'volume',
+                    'source' => 'source',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'stock_price_history',
+                    'indexes' => [
+                        'stock_price_history_stock_ts_idx' => [
+                            'columns' => [
+                                'stock_id',
+                                'timestamp',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'stock' => $o[6],
+                ],
+            ],
+            'idGenerator' => [
+                $o[8],
+            ],
+            'name' => [
+                'App\\Entity\\StockPriceHistory',
+                7 => 'stock_id',
+            ],
+            'id' => [
+                1 => true,
+            ],
+            'type' => [
+                1 => 'integer',
+                'datetime_immutable',
+                'float',
+                'float',
+                'string',
+            ],
+            'fieldName' => [
+                1 => 'id',
+                'timestamp',
+                'price',
+                'volume',
+                'source',
+            ],
+            'columnName' => [
+                1 => 'id',
+                'timestamp',
+                'price',
+                'volume',
+                'source',
+            ],
+            'nullable' => [
+                3 => true,
+                true,
+                true,
+                7 => false,
+            ],
+            'length' => [
+                5 => 32,
+            ],
+            'fetch' => [
+                6 => 2,
+            ],
+            'sourceEntity' => [
+                6 => 'App\\Entity\\StockPriceHistory',
+            ],
+            'sourceToTargetKeyColumns' => [
+                6 => [
+                    'stock_id' => 'id',
+                ],
+            ],
+            'targetToSourceKeyColumns' => [
+                6 => [
+                    'id' => 'stock_id',
+                ],
+            ],
+            'joinColumns' => [
+                6 => [
+                    $o[7],
+                ],
+            ],
+            'joinColumnFieldNames' => [
+                6 => [
+                    'stock_id' => 'stock_id',
+                ],
+            ],
+            'deferrable' => [
+                7 => false,
+            ],
+            'unique' => [
+                7 => false,
+            ],
+            'onDelete' => [
+                7 => 'CASCADE',
+            ],
+            'referencedColumnName' => [
+                7 => 'id',
+            ],
+        ],
+        'Doctrine\\ORM\\Mapping\\AssociationMapping' => [
+            'fieldName' => [
+                6 => 'stock',
+            ],
+            'targetEntity' => [
+                6 => 'App\\Entity\\Stock',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); } },
+3 => new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
         clone ($p['Doctrine\\ORM\\Mapping\\FieldMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\FieldMapping')),
@@ -775,10 +941,12 @@ return [[
     $o[0],
     []
 ); } },
-3 => new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+4 => new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
         clone ($p['Doctrine\\ORM\\Mapping\\FieldMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\FieldMapping')),
+        clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
+        clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
         clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
         clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
         clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
@@ -812,8 +980,10 @@ return [[
                     'name' => $o[2],
                     'description' => $o[3],
                     'isDefault' => $o[4],
-                    'createdAt' => $o[5],
-                    'updatedAt' => $o[6],
+                    'color' => $o[5],
+                    'coverImage' => $o[6],
+                    'createdAt' => $o[7],
+                    'updatedAt' => $o[8],
                 ],
             ],
             'fieldNames' => [
@@ -822,6 +992,8 @@ return [[
                     'name' => 'name',
                     'description' => 'description',
                     'is_default' => 'isDefault',
+                    'color' => 'color',
+                    'cover_image' => 'coverImage',
                     'created_at' => 'createdAt',
                     'updated_at' => 'updatedAt',
                 ],
@@ -832,6 +1004,8 @@ return [[
                     'name' => 'name',
                     'description' => 'description',
                     'isDefault' => 'is_default',
+                    'color' => 'color',
+                    'coverImage' => 'cover_image',
                     'createdAt' => 'created_at',
                     'updatedAt' => 'updated_at',
                 ],
@@ -853,16 +1027,16 @@ return [[
             ],
             'associationMappings' => [
                 [
-                    'user' => $o[7],
-                    'items' => $o[9],
+                    'user' => $o[9],
+                    'items' => $o[11],
                 ],
             ],
             'idGenerator' => [
-                $o[10],
+                $o[12],
             ],
             'name' => [
                 'App\\Entity\\Watchlist',
-                8 => 'user_id',
+                10 => 'user_id',
             ],
             'id' => [
                 1 => true,
@@ -872,6 +1046,8 @@ return [[
                 'string',
                 'text',
                 'boolean',
+                'string',
+                'text',
                 'datetime_immutable',
                 'datetime_immutable',
             ],
@@ -880,6 +1056,8 @@ return [[
                 'name',
                 'description',
                 'isDefault',
+                'color',
+                'coverImage',
                 'createdAt',
                 'updatedAt',
             ],
@@ -888,87 +1066,92 @@ return [[
                 'name',
                 'description',
                 'is_default',
+                'color',
+                'cover_image',
                 'created_at',
                 'updated_at',
             ],
             'length' => [
                 2 => 160,
+                5 => 32,
             ],
             'nullable' => [
                 3 => true,
-                8 => false,
+                5 => true,
+                true,
+                10 => false,
             ],
             'fetch' => [
-                7 => 2,
                 9 => 2,
+                11 => 2,
             ],
             'sourceEntity' => [
-                7 => 'App\\Entity\\Watchlist',
                 9 => 'App\\Entity\\Watchlist',
+                11 => 'App\\Entity\\Watchlist',
             ],
             'inversedBy' => [
-                7 => 'watchlists',
+                9 => 'watchlists',
             ],
             'sourceToTargetKeyColumns' => [
-                7 => [
+                9 => [
                     'user_id' => 'id',
                 ],
             ],
             'targetToSourceKeyColumns' => [
-                7 => [
+                9 => [
                     'id' => 'user_id',
                 ],
             ],
             'joinColumns' => [
-                7 => [
-                    $o[8],
+                9 => [
+                    $o[10],
                 ],
             ],
             'joinColumnFieldNames' => [
-                7 => [
+                9 => [
                     'user_id' => 'user_id',
                 ],
             ],
             'deferrable' => [
-                8 => false,
+                10 => false,
             ],
             'unique' => [
-                8 => false,
+                10 => false,
             ],
             'onDelete' => [
-                8 => 'CASCADE',
+                10 => 'CASCADE',
             ],
             'referencedColumnName' => [
-                8 => 'id',
+                10 => 'id',
             ],
             'cascade' => [
-                9 => [
+                11 => [
                     'persist',
                     'remove',
                 ],
             ],
             'orphanRemoval' => [
-                9 => true,
+                11 => true,
             ],
             'mappedBy' => [
-                9 => 'watchlist',
+                11 => 'watchlist',
             ],
         ],
         'Doctrine\\ORM\\Mapping\\AssociationMapping' => [
             'fieldName' => [
-                7 => 'user',
-                9 => 'items',
+                9 => 'user',
+                11 => 'items',
             ],
             'targetEntity' => [
-                7 => 'App\\Entity\\User',
-                9 => 'App\\Entity\\WatchlistItem',
+                9 => 'App\\Entity\\User',
+                11 => 'App\\Entity\\WatchlistItem',
             ],
         ],
     ],
     $o[0],
     []
 ); } },
-4 => new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+5 => new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
         clone ($p['Doctrine\\ORM\\Mapping\\FieldMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\FieldMapping')),

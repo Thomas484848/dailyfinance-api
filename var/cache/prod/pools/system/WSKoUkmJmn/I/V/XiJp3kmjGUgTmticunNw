@@ -53,7 +53,7 @@ return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\Cach
                 null,
             ],
             'paginationEnabled' => [
-                false,
+                true,
             ],
             'paginationType' => [
                 null,
@@ -157,7 +157,7 @@ return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\Cach
                 null,
             ],
             'stateless' => [
-                true,
+                null,
             ],
             'sunset' => [
                 null,
@@ -184,13 +184,7 @@ return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\Cach
                 null,
             ],
             'cacheHeaders' => [
-                [
-                    'vary' => [
-                        'Content-Type',
-                        'Authorization',
-                        'Origin',
-                    ],
-                ],
+                null,
             ],
             'hydraContext' => [
                 null,
@@ -319,8 +313,8 @@ return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\Cach
                 4 => null,
             ],
             'paginationEnabled' => [
-                2 => false,
-                4 => false,
+                2 => true,
+                4 => true,
             ],
             'paginationType' => [
                 2 => null,
@@ -505,8 +499,8 @@ return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\Cach
                 4 => null,
             ],
             'stateless' => [
-                2 => true,
-                4 => true,
+                2 => null,
+                4 => null,
             ],
             'sunset' => [
                 2 => null,
@@ -529,28 +523,16 @@ return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\Cach
                 4 => null,
             ],
             'controller' => [
-                2 => 'App\\Controller\\UserMeController',
-                4 => 'App\\Controller\\UserMeController',
+                2 => 'App\\Controller\\UserController',
+                4 => 'App\\Controller\\UserController',
             ],
             'headers' => [
                 2 => null,
                 4 => null,
             ],
             'cacheHeaders' => [
-                2 => [
-                    'vary' => [
-                        'Content-Type',
-                        'Authorization',
-                        'Origin',
-                    ],
-                ],
-                4 => [
-                    'vary' => [
-                        'Content-Type',
-                        'Authorization',
-                        'Origin',
-                    ],
-                ],
+                2 => null,
+                4 => null,
             ],
             'hydraContext' => [
                 2 => null,
