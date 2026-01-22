@@ -13,3 +13,9 @@ lexik_jwt_authentication:
             enabled: false
         query_parameter:
             enabled: false
+    set_cookies:
+        BEARER:
+            secure: false
+            httpOnly: true
+            same site: lax
+            path: /
