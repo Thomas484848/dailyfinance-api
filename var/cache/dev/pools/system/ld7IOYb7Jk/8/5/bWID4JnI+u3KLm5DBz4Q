@@ -1,0 +1,56 @@
+<?php //property_name_collection_6a8714883a6a486f
+
+return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['ApiPlatform\\Metadata\\Property\\PropertyNameCollection'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Property\\PropertyNameCollection')),
+    ],
+    null,
+    [
+        'ApiPlatform\\Metadata\\Property\\PropertyNameCollection' => [
+            'properties' => [
+                [
+                    'id',
+                    'symbol',
+                    'exchangeCode',
+                    'mic',
+                    'isin',
+                    'name',
+                    'type',
+                    'currency',
+                    'country',
+                    'sector',
+                    'industry',
+                    'website',
+                    'description',
+                    'logoUrl',
+                    'lastPrice',
+                    'open',
+                    'high',
+                    'low',
+                    'prevClose',
+                    'change',
+                    'changePercent',
+                    'avgVolume30d',
+                    'marketCap',
+                    'sharesOutstanding',
+                    'floatShares',
+                    'quoteTimestamp',
+                    'lastUpdatedAt',
+                    'beta',
+                    'dividendYield',
+                    'dividendRate',
+                    'peTtm',
+                    'pb',
+                    'psTtm',
+                    'evEbitda',
+                    'week52High',
+                    'week52Low',
+                    'active',
+                    'dataSource',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); } }];

@@ -1,0 +1,31 @@
+<?php //Symfony_Component_Security_Core_User_UserInterface
+
+return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'Symfony\\Component\\Serializer\\Mapping\\ClassMetadata' => [
+            'name' => [
+                'Symfony\\Component\\Security\\Core\\User\\UserInterface',
+            ],
+            'attributesMetadata' => [
+                [
+                    'roles' => $o[1],
+                    'userIdentifier' => $o[2],
+                ],
+            ],
+        ],
+        'Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata' => [
+            'name' => [
+                1 => 'roles',
+                'userIdentifier',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); } }];

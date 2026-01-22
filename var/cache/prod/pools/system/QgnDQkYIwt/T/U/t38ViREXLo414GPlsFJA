@@ -1,0 +1,78 @@
+<?php //App_Entity_User
+
+return [PHP_INT_MAX, new class() implements \Symfony\Component\Cache\Traits\CachedValueInterface { public function getValue(): mixed { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'Symfony\\Component\\Serializer\\Mapping\\ClassMetadata' => [
+            'name' => [
+                'App\\Entity\\User',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'firstName' => $o[2],
+                    'lastName' => $o[3],
+                    'email' => $o[4],
+                    'passwordHash' => $o[5],
+                    'avatarUrl' => $o[6],
+                    'createdAt' => $o[7],
+                    'updatedAt' => $o[8],
+                    'watchlists' => $o[9],
+                    'userIdentifier' => $o[10],
+                    'roles' => $o[11],
+                    'password' => $o[12],
+                ],
+            ],
+        ],
+        'Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata' => [
+            'name' => [
+                1 => 'id',
+                'firstName',
+                'lastName',
+                'email',
+                'passwordHash',
+                'avatarUrl',
+                'createdAt',
+                'updatedAt',
+                'watchlists',
+                'userIdentifier',
+                'roles',
+                'password',
+            ],
+            'groups' => [
+                2 => [
+                    'user:read',
+                    'user:write',
+                ],
+                [
+                    'user:read',
+                    'user:write',
+                ],
+                [
+                    'user:read',
+                ],
+                6 => [
+                    'user:read',
+                    'user:write',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); } }];
