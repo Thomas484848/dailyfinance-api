@@ -1,13 +1,13 @@
 <?php return array(
     'root' => array(
         'name' => 'symfony/skeleton',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '2a995f222c50c1fbe36abfeb5f9613db91783f2e',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'api-platform/doctrine-common' => array(
@@ -881,9 +881,9 @@
             ),
         ),
         'symfony/skeleton' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '2a995f222c50c1fbe36abfeb5f9613db91783f2e',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
